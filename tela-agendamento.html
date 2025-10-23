@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Novo Agendamento - NAF</title>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background-color: #f4f7f6; margin: 0; padding: 20px; display: flex; justify-content: center; align-items: flex-start; min-height: 100vh; }
+    .container { width: 100%; max-width: 800px; background-color: #ffffff; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); overflow: hidden; }
+    header { background-color: #007bff; color: white; padding: 20px; text-align: center; }
+    header h1 { margin: 0; font-size: 1.5em; }
+    nav { background-color: #fdfdfd; border-bottom: 1px solid #e0e0e0; padding: 10px 20px; }
+    nav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 20px; }
+    nav ul li a { text-decoration: none; color: #007bff; font-weight: 500; }
+    main { padding: 30px; }
+    .form-group { margin-bottom: 20px; }
+    .form-group label { display: block; margin-bottom: 8px; font-weight: 600; color: #333; }
+    .form-group input, .form-group select { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 6px; box-sizing: border-box; }
+    .btn { display: inline-block; background-color: #007bff; color: white; padding: 12px 20px; border: none; border-radius: 6px; cursor: pointer; font-size: 1em; font-weight: 600; text-align: center; text-decoration: none; }
+    .horarios-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 10px; margin-top: 20px; }
+    .horario-slot { padding: 15px; border: 1px solid #007bff; border-radius: 6px; text-align: center; cursor: pointer; color: #007bff; font-weight: 500; }
+    .horario-slot:hover { background-color: #e6f2ff; }
+    .horario-slot.selected { background-color: #007bff; color: white; }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <h1>Sistema de Agendamento NAF</h1>
+    </header>
+    <nav>
+      <ul>
+        <li><a href="#agendamento" style="font-weight: 700; color: #333;">Novo Agendamento</a></li>
+        <li><a href="#historico">Meus Agendamentos</a></li>
+        <li><a href="#perfil">Meu Perfil</a></li>
+        <li><a href="#logout" style="color: #dc3545;">Sair</a></li> 
+      </ul>
+    </nav>
+    <main>
+      <h2>Novo Agendamento</h2>
+      
+      <form action="#confirmar" method="post">
+        <div class="form-group">
+          <label for="servico">Tipo de Atendimento</label>
+          <select id="servico" name="servico">
+            <option value="irpf">Declaração de IRPF</option>
+            <option value="mei">Abertura de MEI</option>
+            <option value="outros">Outras Dúvidas Fiscais</option>
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label for="data">Escolha a Data</label>
+          <input type="date" id="data" name="data">
+        </div>
+
+        <div class="form-group">
+          <label>Escolha o Horário</label>
+          <div class="horarios-grid">
+            <div class="horario-slot">09:00</div>
+            <div class="horario-slot">09:30</div>
+            <div class="horario-slot">10:00</div>
+            <div class="horario-slot selected">10:30</div>
+            <div class="horario-slot">11:00</div>
+            <div class="horario-slot">14:00</div>
+            <div class="horario-slot">14:30</div>
+            <div class="horario-slot">15:00</div>
+          </div>
+        </div>
+
+        <button type="submit" class="btn">Confirmar Agendamento</button>
+      </form>
+    </main>
+  </div>
+
+</body>
+</html>
+<style>
+  /* Fonte e Fundo */
+  body {
+    /* A Unifor usa uma fonte proprietária, mas esta é uma aproximação web-safe moderna */
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #f4f7f6; /* Um fundo neutro e claro */
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+  }
+
+  /* Container Principal */
+  .container {
+    width: 100%;
+    max-width: 800px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    border-top: 5px solid #005A9C; /* Cor Primária Unifor */
+  }
+
+  /* Cabeçalho */
+  header {
+    background-color: #005A9C; /* Cor Primária Unifor */
+    color: white;
+    padding: 20px 30px;
+    text-align: left; /* Alinhamento mais comum em portais */
+  }
+  header h1 {
+    margin: 0;
+    font-size: 1.5em;
+  }
+
+  /* Navegação */
+  nav {
+    background-color: #fdfdfd;
+    border-bottom: 1px solid #e0e0e0;
+    padding: 10px 30px;
+  }
+  nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 25px; /* Mais espaçamento */
+  }
+  nav ul li a {
+    text-decoration: none;
+    color: #005A9C; /* Cor Primária para links */
+    font-weight: 600;
+    font-size: 0.95em;
+  }
+  nav ul li a:hover {
+    color: #003D6B; /* Um azul mais escuro para hover */
+  }
+
+  /* Conteúdo Principal */
+  main {
+    padding: 30px;
+  }
+  main h2 {
+    color: #005A9C; /* Títulos com a cor primária */
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 10px;
+  }
+
+  /* Formulários */
+  .form-group {
+    margin-bottom: 20px;
+  }
+  .form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #333;
+  }
+  .form-group input,
+  .form-group select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box; 
+    font-size: 1em;
+  }
+  .form-group input:focus,
+  .form-group select:focus {
+    border-color: #005A9C;
+    box-shadow: 0 0 0 2px rgba(0, 90, 156, 0.2);
+    outline: none;
+  }
+
+  /* Botões */
+  .btn {
+    display: inline-block;
+    background-color: #005A9C; /* Cor Primária Unifor */
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+  }
+  .btn:hover {
+    background-color: #003D6B; /* Azul mais escuro */
+  }
+  .btn-secondary {
+    background-color: #6c757d;
+  }
+  .btn-danger {
+    background-color: #dc3545;
+  }
+  .btn-success {
+    background-color: #28a745;
+  }
+
+  /* Listas (Histórico, Atendimentos) */
+  .list-item {
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    padding: 20px;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .list-item-info {
+    flex-grow: 1;
+  }
+  .list-item-info h3 {
+    margin: 0 0 10px 0;
+    color: #005A9C;
+  }
+  .list-item-info p {
+    margin: 4px 0;
+    color: #555;
+  }
+  .list-item-info p .status {
+    font-weight: 600;
+  }
+
+  /* Cores de Status */
+  .status-confirmado { color: #28a745; }
+  .status-concluido { color: #6c757d; }
+
+  /* Telas de Autenticação (Cadastro, Login, Recuperar) */
+  .auth-form-container {
+     width: 100%;
+     max-width: 450px;
+  }
+  .auth-form-container .btn {
+    width: 100%;
+  }
+  .auth-form-container main {
+    padding-top: 10px;
+  }
+  .auth-form-container header {
+    text-align: center;
+  }
+  .login-link {
+    text-align: center;
+    margin-top: 20px;
+    color: #555;
+  }
+  .login-link a {
+    color: #005A9C;
+    text-decoration: none;
+    font-weight: 600;
+  }
+</style>

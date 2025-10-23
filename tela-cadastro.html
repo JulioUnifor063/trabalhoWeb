@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro de Usuário - NAF</title>
+  
+  <style>
+    /* Fonte e Fundo */
+    body {
+      /* A Unifor usa uma fonte proprietária, mas esta é uma aproximação web-safe moderna */
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: #f4f7f6; /* Um fundo neutro e claro */
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start; /* Alinhado ao topo para formulários longos */
+      min-height: 100vh;
+    }
+
+    /* Container Principal */
+    .container {
+      width: 100%;
+      max-width: 800px;
+      background-color: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      border-top: 5px solid #005A9C; /* Cor Primária Unifor */
+      
+      /* Aplicando regras do container de autenticação */
+      max-width: 450px; /* Reduzindo para o formato de login */
+    }
+
+    /* Cabeçalho */
+    header {
+      background-color: #005A9C; /* Cor Primária Unifor */
+      color: white;
+      padding: 20px 30px;
+      text-align: center; /* Centralizado para o formulário de login */
+    }
+    header h1 {
+      margin: 0;
+      font-size: 1.5em;
+    }
+
+    /* Navegação (Removida do formulário de login, mas mantida no CSS) */
+    nav {
+      background-color: #fdfdfd;
+      border-bottom: 1px solid #e0e0e0;
+      padding: 10px 30px;
+    }
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      gap: 25px; /* Mais espaçamento */
+    }
+    nav ul li a {
+      text-decoration: none;
+      color: #005A9C; /* Cor Primária para links */
+      font-weight: 600;
+      font-size: 0.95em;
+    }
+    nav ul li a:hover {
+      color: #003D6B; /* Um azul mais escuro para hover */
+    }
+
+    /* Conteúdo Principal */
+    main {
+      padding: 30px;
+      padding-top: 10px; /* Ajuste do auth-form-container */
+    }
+    main h2 {
+      color: #005A9C; /* Títulos com a cor primária */
+      border-bottom: 2px solid #f0f0f0;
+      padding-bottom: 10px;
+      text-align: center; /* Adicionado para o h2 "Criar Conta" */
+      margin-top: 0; /* Adicionado para o h2 "Criar Conta" */
+    }
+
+    /* Formulários */
+    .form-group {
+      margin-bottom: 20px;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: #333;
+    }
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      box-sizing: border-box; 
+      font-size: 1em;
+    }
+    .form-group input:focus,
+    .form-group select:focus {
+      border-color: #005A9C;
+      box-shadow: 0 0 0 2px rgba(0, 90, 156, 0.2);
+      outline: none;
+    }
+
+    /* Botões */
+    .btn {
+      display: inline-block;
+      background-color: #005A9C; /* Cor Primária Unifor */
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1em;
+      font-weight: 600;
+      text-align: center;
+      text-decoration: none;
+      transition: background-color 0.2s ease;
+      width: 100%; /* Aplicando regra do auth-form-container */
+      margin-top: 10px; /* Adicionado para espaçamento */
+    }
+    .btn:hover {
+      background-color: #003D6B; /* Azul mais escuro */
+    }
+    .btn-secondary { background-color: #6c757d; }
+    .btn-danger { background-color: #dc3545; }
+    .btn-success { background-color: #28a745; }
+
+    /* Listas (Histórico, Atendimentos) - Não usado aqui, mas mantido */
+    .list-item {
+      border: 1px solid #e0e0e0;
+      border-radius: 6px;
+      padding: 20px;
+      margin-bottom: 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    /* (Restante das regras de lista omitidas por brevidade, mas estão no seu CSS) */
+
+    /* Telas de Autenticação (Cadastro, Login, Recuperar) */
+    .login-link {
+      text-align: center;
+      margin-top: 20px;
+      color: #555;
+    }
+    .login-link a {
+      color: #005A9C;
+      text-decoration: none;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container"> <header>
+      <h1>Sistema de Agendamento NAF</h1>
+    </header>
+    <main>
+      <h2 style="text-align: center; margin-top: 0; color: #333;">Criar Conta</h2>
+      <form action="#" method="post">
+        <div class="form-group">
+          <label for="nome">Nome Completo</label>
+          <input type="text" id="nome" name="nome" required>
+        </div>
+        <div class="form-group">
+          <label for="email">E-mail</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+          <label for="senha">Senha</label>
+          <input type="password" id="senha" name="senha" required>
+        </div>
+        <div class="form-group">
+          <label for="confirmar-senha">Confirmar Senha</label>
+          <input type="password" id="confirmar-senha" name="confirmar-senha" required>
+        </div>
+        <button type="submit" class="btn">Cadastrar</button>
+      </form>
+      <p class="login-link">Já tem uma conta? <a href="#login">Faça Login</a></p>
+    </main>
+  </div>
+
+</body>
+</html>
